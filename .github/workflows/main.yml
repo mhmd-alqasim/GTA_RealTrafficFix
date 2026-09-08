@@ -17,14 +17,15 @@ jobs:
         
     - name: Download AndroidModLoader template
       run: |
-        wget -O ./AML_src.zip https://github.com/RusJJ/AndroidModLoader/archive/refs/heads/main.zip
+        wget -O ./AML_src.zip https://github.com
         unzip ./AML_src.zip
         mv ./AndroidModLoader-main/mod ./mod
 
-    - name: Get GTA:SA structures file (Public)
+    - name: Get GTA:SA structures file (Fixed)
       run: |
-        git clone https://github.com ./structs
-        mv ./structs/* ./ || true
+        wget -O ./structs.zip https://github.com || wget -O ./structs.zip https://github.com
+        unzip ./structs.zip
+        mv ./GTASAAndroid_Structs-*/* ./ || true
 
     - name: Install Android NDK (r25c)
       uses: nttld/setup-ndk@v1.5.0
